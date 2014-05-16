@@ -37,6 +37,10 @@ public class Query implements HtmlFormXPathQuery {
 	public HtmlFormXPathQuery parentForm() {
 		return formAncestor(query);
 	}
+	
+	public HtmlFormXPathQuery hasValue(String value) {
+		return valueOfInput(query, value);
+	}
 
 	@Override
 	public String toString() {

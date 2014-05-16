@@ -52,4 +52,8 @@ public enum Form implements HtmlFormXPathQuery {
 		return query;
 	}
 
+	public HtmlFormXPathQuery hasValue(String value) {
+		return valueOfInput(query, value);
+	}
+
 }

@@ -27,6 +27,10 @@ public class QueryUtility {
 		return new Query(String.format("//label[contains(.,'%s')]/following-sibling::%s", labelText, strip(query)));
 	}
 	
+	public static Query valueOfInput(String query, String value) {
+		return new Query(String.format("%s[@value='%s']", strip(query), value));
+	}
+	
 	public static Query formAncestor(String query) {
 		return new Query(String.format("%s/ancestor::form", query));
 	}
