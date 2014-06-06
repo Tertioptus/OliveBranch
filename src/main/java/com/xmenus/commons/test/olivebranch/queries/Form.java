@@ -9,6 +9,7 @@ public enum Form implements HtmlFormXPathQuery {
 	RADIO("input[@type='radio']"),
 	SUBMIT("input[@type='submit']"),
 	SELECT("select"),
+	MULTI_SELECT("select[@multiple='multiple']"),
 	FIELDSET("fieldset"),
 	LEGEND("legend"),
 	TEXT("input[@type='text']");
