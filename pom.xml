@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.xmenus.commons.test</groupId>
   <artifactId>olive-branch</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>Olive Branch</name>
   <description>Dictation library for automated web browser testing.</description>
   

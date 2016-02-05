@@ -66,4 +66,8 @@ public class LoggingUserAgent implements UserAgent {
 		return agent;
 		
 	}
+
+	public void quit() {
+		agent.quit();
+	}
 }

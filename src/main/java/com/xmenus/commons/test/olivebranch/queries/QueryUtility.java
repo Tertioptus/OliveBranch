@@ -24,7 +24,7 @@ public class QueryUtility {
 	}
 	
 	public static Query labelOfInput(String query, String labelText) {
-		return new Query(String.format("//label[contains(.,'%s')]/following-sibling::%s", labelText, strip(query)));
+		return new Query(String.format("//label[contains(.,'%s')]/following::%s[1]", labelText, strip(query)));
 	}
 	
 	public static Query valueOfInput(String query, String value) {

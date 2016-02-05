@@ -1,7 +1,4 @@
-package com.xmenus.commons.test.olivebranch.agents;
-
-import com.xmenus.commons.test.olivebranch.queries.XPathQuery;
-import com.xmenus.commons.test.olivebranch.time.Accordingly;
+package com.olivebranch;
 
 /**
  * Represents a user logged into a live application, operating as an agent
@@ -14,66 +11,68 @@ import com.xmenus.commons.test.olivebranch.time.Accordingly;
  * @version 	$Revision$
  * @since 		1.7
  */
-public interface UserAgent {
+public interface Agent {
 	
 	/**
 	 * Directs user agent to start page.
 	 * @param string
 	 */
-	UserAgent startAt(String string);
+	String host();
 
 	/**
 	 * Directs user agent to a particular page within the application's site.
 	 * @param string
 	 */
-	UserAgent goTo(String string);
+	Agent goTo(String string);
 
 	/**
 	 * Commands user agent to click on a requested element.
 	 * @param selector
 	 */
-	UserAgent click(XPathQuery query, Accordingly... actionDelay);
+	Agent click(Content content);
 	
 	/**
 	 * Return text in requested element if element is found.
 	 * @param selector
 	 * @return
 	 */
-	String report(XPathQuery query, Accordingly... actionDelay);
+	String report(Content content);
 	
 	/**
 	 * Tells user agent to input text within the requested element.
 	 * @param selector
 	 * @param keys
 	 */
-	UserAgent type(XPathQuery query, CharSequence keys, Accordingly... actionDelay);
+	Agent type(Content content, CharSequence keys);
 	
 	/**
 	 * Clears data out of the requested element.  Primarily for textual 
 	 * form fields.
 	 * @param selector
 	 */
-	UserAgent clear(XPathQuery query, Accordingly... actionDelay);
+	Agent clear(Content content);
 
 	/**
 	 * Reports availability of requested element.
 	 * @param selector
 	 * @return
 	 */
-	boolean verify(XPathQuery query, Accordingly... actionDelay);
+	boolean verify(Content content);
 	
 
 	/**
 	 * Commands user agent to submit on a requested element or page.
 	 * @param selector
 	 */
-	UserAgent submit(XPathQuery query, Accordingly... actionDelay);
+	Agent submit(Content content);
 	
-	String currentUrl(Accordingly... actionDelay);
+	String location();
 
-	UserAgent select(XPathQuery query, String option, Accordingly... actionDelay);
+	Agent select(Content content, String option);
 	
-	UserAgent takeScreenShot();
+	Agent takeScreenShot();
+	
+	Agent wait(Time time);
 	
 	void quit();
 }

@@ -100,4 +100,8 @@ public class WebDriverAgent implements UserAgent {
 			return this;
 		
 	}
+
+	public void  quit() {
+		webDriver.quit();
+	}
 }
