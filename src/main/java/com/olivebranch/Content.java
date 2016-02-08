@@ -39,8 +39,8 @@ public interface Content {
 	Content parent();
 	
 	/**
-	 * Establishes adjacency between to content objects, whereas both objects share the same
-	 * parent container
+	 * Establishes adjacency between two Content objects, whereas the Content object shares the same
+	 * parent container with the parameterized one.
 	 * 
 	 * @param sibling
 	 * @return Content
