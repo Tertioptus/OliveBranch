@@ -1,14 +1,14 @@
 package com.olivebranch;
 
 /**
- * Approximately is an enumerator that produces a length of time in units of milliseconds from a human readable java code expression.
+ * Just is an enumerator that produces a length of time in units of milliseconds from a human readable java code expression.
  * 
  * @author Benjamin Paige
  * @version 1.0
  * @since 1.0
  *
  */
-public enum Approximately {
+public enum Just {
 
 	ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), TEN(10), TWENTY(20), THIRTY(30);
 	
@@ -17,7 +17,7 @@ public enum Approximately {
 
 	private final int count;
 	
-	Approximately(int count) {
+	Just(int count) {
 		this.count = count;
 	}
 

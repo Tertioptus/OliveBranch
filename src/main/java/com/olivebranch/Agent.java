@@ -1,47 +1,36 @@
 package com.olivebranch;
 
 /**
- * Represents a user logged into a live application, operating as an agent
- * that reports application status and simulates user activity on command.
- * <p/>
- * This interface requires expects HTML DOM query in the form of a css selector
- * or xpath 
+ * An Agent represents a user performing some activity via a graphical user interface. 
  * 
  * @author 		Benjamin F. Paige III
- * @version 	$Revision$
- * @since 		1.7
+ * @version 	1.0
+ * @since 		1.0
  */
 public interface Agent {
 	
 	/**
-	 * Directs user agent to start page.
+	 * Directs agent to a particular page within the application's site.
 	 * @param string
-	 */
-	String host();
-
-	/**
-	 * Directs user agent to a particular page within the application's site.
-	 * @param string
+	 * 
+	 * @return Returns calling Agent 
 	 */
 	Agent goTo(String string);
 
 	/**
-	 * Commands user agent to click on a requested element.
+	 * Commands agent to click on a requested element.
 	 * @param selector
+	 * 
+	 * @return Returns calling Agent 
 	 */
 	Agent click(Content content);
 	
 	/**
-	 * Return text in requested element if element is found.
-	 * @param selector
-	 * @return
-	 */
-	String report(Content content);
-	
-	/**
-	 * Tells user agent to input text within the requested element.
+	 * Tells agent to input text within the requested element.
 	 * @param selector
 	 * @param keys
+	 * 
+	 * @return Returns calling Agent 
 	 */
 	Agent type(Content content, CharSequence keys);
 	
@@ -49,30 +38,56 @@ public interface Agent {
 	 * Clears data out of the requested element.  Primarily for textual 
 	 * form fields.
 	 * @param selector
+	 * 
+	 * @return Returns calling Agent 
 	 */
 	Agent clear(Content content);
 
 	/**
-	 * Reports availability of requested element.
-	 * @param selector
-	 * @return
+	 * Selects option from specified select box content.
+	 * 
+	 * @param content select box
+	 * @param option select box option
+	 * 
+	 * @return Returns calling Agent 
 	 */
-	boolean verify(Content content);
-	
+	Agent select(Content selectBox, String option);
 
 	/**
-	 * Commands user agent to submit on a requested element or page.
-	 * @param selector
+	 * Requests agent to wait for previous action to complete for a specified amount of time.
+	 * 
+	 * @param time The amount of time for agent to wait.
+	 * 
+	 * @return Returns calling Agent 
 	 */
-	Agent submit(Content content);
-	
-	String location();
-
-	Agent select(Content content, String option);
-	
-	Agent takeScreenShot();
-	
 	Agent wait(Time time);
+
+	/**
+	 * Reports availability of requested element.
+	 * 
+	 * @param selector
+	 * @return availability of requested element.
+	 */
+	boolean verify(Content content);
+
+	/**
+	 * Agent reports on one aspect of user session 
+	 * 
+	 * @param on
+	 * @return
+	 */
+	String report(On on);
 	
+	/**
+	 * Record the current rendition of a GUIs resource.
+	 * 
+	 * @param imageOf An enumerator designating the type of resource
+	 * @return location of captured file
+	 */
+	String capture(ImageOf imageOf);
+	
+	/**
+	 * End session.
+	 */
 	void quit();
 }
