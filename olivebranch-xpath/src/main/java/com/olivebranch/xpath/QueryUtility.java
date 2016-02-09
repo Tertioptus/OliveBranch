@@ -10,7 +10,7 @@ class QueryUtility {
 	}
 
 	public static Query hasValues(String query, String... values) {
-		return new Query(String.format(query, values));
+		return new Query(String.format(query, (Object[]) values));
 	}
 
 	public static Query indexOfQuery(String query, int naturalNumberIndex) {
