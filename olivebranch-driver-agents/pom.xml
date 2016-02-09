@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.olivebranch</groupId>
+		<artifactId>olivebranch</artifactId>
+  		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>olivebranch-driver-agents</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Olive Branch: Driver Agents</name>
+
+	<properties>
+		<org.seleniumhq.selenium.version>2.31.0</org.seleniumhq.selenium.version>
+		<com.github.detro.ghostdriver>1.0.3</com.github.detro.ghostdriver>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.olivebranch</groupId>
+			<artifactId>olivebranch-api</artifactId>
+			<version>${com.olivebranch.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-api</artifactId>
+			<version>${org.seleniumhq.selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${org.seleniumhq.selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${org.seleniumhq.selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.detro.ghostdriver</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>${com.github.detro.ghostdriver}</version>
+		</dependency>
+	</dependencies>
+</project>
