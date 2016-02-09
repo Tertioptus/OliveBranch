@@ -14,8 +14,6 @@ public enum Page implements Content {
 
 	IMAGE("img"),
 
-	LABEL("label"),
-
 	LINK("a"),
 
 	TAB("a"),

@@ -21,4 +21,10 @@ public final class Text {
 	public Content isNotPresent(){
 		return new Query(String.format("//body[not(contains(.,'%s'))]", text));
 	}
+	
+	@Override
+	public String toString() {
+		return text;
+	}
 }
+

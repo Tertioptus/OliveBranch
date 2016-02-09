@@ -8,16 +8,14 @@ import static com.olivebranch.xpath.QueryUtility.querySibling;
 
 import com.olivebranch.Content;
 
-public enum Button implements Content {
-	
-	TITLE("a[starts-with(@title,'%s')]");
+abstract class AbstractQuery {
 
-	private final String query;
+	final String query;
 
-	Button(final String query) {
-		this.query = "//" + query;
-	};
-	
+	AbstractQuery(final String query) {
+		this.query = query;
+	}
+
 	public Content in(Content parent) {
 		return inParent(parent,query);
 	}
@@ -26,7 +24,7 @@ public enum Button implements Content {
 		return hasValues(query, values);
 	}
 
-	public Content number(int number) {
+	public Content number(final int number) {
 		return indexOfQuery( query, number);
 	}
 

@@ -14,17 +14,17 @@ public interface FormContent extends Content {
 	 * Returns element that has a label containing the specified text 
 	 * @param text text displayed from a label
 	 */
-	Content labeled(String text);
+	FormContent labeled(String text);
 	
 	/**
 	 * Returns the form in which this content is contained 
 	 */
-	Content parentForm();
+	FormContent parentForm();
 	
 	/**
 	 * Returns the input element that has the specified value
 	 * @param value
 	 * @return input element in the form of a Content object
 	 */
-	Content hasValue(String value);
+	FormContent hasValue(String value);
 }

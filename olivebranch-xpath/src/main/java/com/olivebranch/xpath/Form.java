@@ -15,6 +15,7 @@ import com.olivebranch.FormContent;
 public enum Form implements FormContent {
 
 	INPUT("input"),
+	LABEL("label"),
 	BUTTON("button"),
 	RADIO("input[@type='radio']"),
 	SUBMIT("input[@type='submit']"),
@@ -30,11 +31,11 @@ public enum Form implements FormContent {
 		this.query = "//" + query;
 	}
 
-	public Content labeled(String text) {
+	public FormContent labeled(String text) {
 		return labelOfInput(query, text);
 	}
 
-	public Content parentForm() {
+	public FormContent parentForm() {
 		return formAncestor(query);
 	}
 
@@ -42,7 +43,7 @@ public enum Form implements FormContent {
 		return inParent(parent, query);
 	}
 
-	public Content has(String... values) {
+	public FormContent has(String... values) {
 		return hasValues(query, values);
 	}
 
@@ -58,11 +59,16 @@ public enum Form implements FormContent {
 		return querySibling(query, content);
 	}
 	
-	public Content hasValue(String value) {
+	public FormContent hasValue(String value) {
 		return valueOfInput(query, value);
 	}
 
 	public String query() {
+		return query;
+	}
+	
+	@Override
+	public String toString() {
 		return query;
 	}
 }
