@@ -19,15 +19,19 @@ import com.olivebranch.On;
 import com.olivebranch.Time;
 
 public class WebDriverAgent implements Agent {
+
+	private final String host;
 	
 	protected final WebDriver webDriver;
 	
-	public WebDriverAgent(WebDriver webDriver) {
+	public WebDriverAgent(final WebDriver webDriver, final String host) {
 		this.webDriver = webDriver;
+		this.host = host;
+		webDriver.get(host);
 	}
 
 	public Agent goTo(String url) {
-		webDriver.get(url);
+		webDriver.get(host + "/" + url);
 		return this;
 	}
 
@@ -58,10 +62,6 @@ public class WebDriverAgent implements Agent {
 	public Agent submit(Content content) {
 		findElement(content).submit();
 		return this;
-	}
-
-	public String currentUrl() {
-		return webDriver.getCurrentUrl();
 	}
 
 	public Agent select(Content content, String option) {
@@ -125,7 +125,7 @@ public class WebDriverAgent implements Agent {
 		String message = null;
 		switch (on) {
 		case HOST:
-			message = webDriver.getCurrentUrl();
+			message = host;
 			break;
 		case LOCATION:
 			message = webDriver.getCurrentUrl();

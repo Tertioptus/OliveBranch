@@ -22,7 +22,7 @@ public interface Content {
 	 * @param values
 	 * @return
 	 */
-	Content has(String... values);
+	Content thatHas(String... values);
 	
 	/**
 	 * 
