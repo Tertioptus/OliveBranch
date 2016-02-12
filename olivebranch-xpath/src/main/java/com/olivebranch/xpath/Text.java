@@ -10,7 +10,7 @@ public final class Text {
 		this.text = text;
 	}
 	
-	public static Text that(String text) {
+	public static Text where(String text) {
 		return new Text(text);
 	}
 	

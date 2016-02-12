@@ -43,7 +43,7 @@ public enum Form implements FormContent {
 		return inParent(parent, query);
 	}
 
-	public FormContent has(String... values) {
+	public FormContent thatHas(String... values) {
 		return hasValues(query, values);
 	}
 

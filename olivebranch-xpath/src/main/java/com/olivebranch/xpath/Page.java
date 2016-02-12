@@ -34,7 +34,7 @@ public enum Page implements Content {
 		return inParent(parent, query);
 	}
 
-	public Content has(String... values) {
+	public Content thatHas(String... values) {
 		return hasValues(query + "[contains(.,'%s')]", values);
 	}
 

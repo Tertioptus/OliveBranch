@@ -20,7 +20,7 @@ abstract class AbstractQuery {
 		return inParent(parent,query);
 	}
 
-	public Content has(String... values) {
+	public Content thatHas(String... values) {
 		return hasValues(query, values);
 	}
 
