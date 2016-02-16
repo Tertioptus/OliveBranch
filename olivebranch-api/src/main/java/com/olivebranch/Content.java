@@ -1,56 +1,56 @@
 package com.olivebranch;
 
 /**
- * A Content represents some identifiable portion within a GUI rendition.
+ * A Content<T> represents some identifiable portion within a GUI rendition.
  * 
  * @author Benjamin Paige
  * @version 1.0
  * @since 1.0
  *
  */
-public interface Content {
+public interface Content<T> {
 
 	/**
-	 * Identifies the container of the current content to allow further specificity in the generated query
+	 * Identifies the container of the current Content<T> to allow further specificity in the generated query
 	 * @param parent
-	 * @return A Content instance that is 
+	 * @return A Content<T> instance that is 
 	 */
-	Content in(Content parent);
+	Content<T> in(Content<T> parent);
 
 	/**
 	 * 
 	 * @param values
 	 * @return
 	 */
-	Content thatHas(String... values);
+	Content<T> thatHas(String... values);
 	
 	/**
 	 * 
 	 * @param number
 	 * @return
 	 */
-	Content number(int number);
+	Content<T> number(int number);
 	
 	/**
 	 * Establishes 
 	 * 
 	 * @return
 	 */
-	Content parent();
+	Content<T> parent();
 	
 	/**
-	 * Establishes adjacency between two Content objects, whereas the Content object shares the same
+	 * Establishes adjacency between two Content<T> objects, whereas the Content<T> object shares the same
 	 * parent container with the parameterized one.
 	 * 
 	 * @param sibling
-	 * @return Content
+	 * @return Content<T>
 	 */
-	Content sibling(Content sibling);
+	Content<T> sibling(Content<T> sibling);
 	
 	/**
-	 * Returns Query expression for identifying content in a specified medium.
+	 * Returns Query expression for identifying Content<T> in a specified medium.
 	 * 
 	 * @return Query expression
 	 */
-	String query();
+	T query();
 }

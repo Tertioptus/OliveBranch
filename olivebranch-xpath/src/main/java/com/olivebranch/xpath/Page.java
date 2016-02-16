@@ -8,7 +8,7 @@ import static com.olivebranch.xpath.QueryUtility.querySibling;
 
 import com.olivebranch.Content;
 
-public enum Page implements Content {
+public enum Page implements Content<String> {
 
 	BUTTON("button"),
 
@@ -30,19 +30,19 @@ public enum Page implements Content {
 		this.query = "//" + query;
 	};
 
-	public Content in(Content parent) {
+	public Content<String> in(Content<String> parent) {
 		return inParent(parent, query);
 	}
 
-	public Content thatHas(String... values) {
+	public Content<String> thatHas(String... values) {
 		return hasValues(query + "[contains(.,'%s')]", values);
 	}
 
-	public Content parent() {
+	public Content<String> parent() {
 		return queryParent(query);
 	}
 
-	public Content sibling(Content content) {
+	public Content<String> sibling(Content<String> content) {
 		return querySibling(query, content);
 	}
 
@@ -50,7 +50,7 @@ public enum Page implements Content {
 		return query;
 	}
 
-	public Content number(int number) {
+	public Content<String> number(int number) {
 		return indexOfQuery(query, number);
 	}
 

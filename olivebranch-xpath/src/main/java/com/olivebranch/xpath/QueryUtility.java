@@ -5,7 +5,7 @@ import com.olivebranch.Content;
 class QueryUtility {
 	
 	
-	public static Query inParent(Content parent, String query) {
+	public static Query inParent(Content<String> parent, String query) {
 		return new Query(String.format("%s//%s", parent, strip(query)));		
 	}
 
@@ -21,7 +21,7 @@ class QueryUtility {
 		return new Query(String.format("%s/parent::*", query));
 	}
 
-	public static Query querySibling(String query, Content sibling) {
+	public static Query querySibling(String query, Content<String> sibling) {
 		return new Query(String.format("%s//%s", sibling.parent(), strip(query)));
 	}
 	

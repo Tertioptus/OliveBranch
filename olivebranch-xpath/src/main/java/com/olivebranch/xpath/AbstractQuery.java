@@ -16,23 +16,23 @@ abstract class AbstractQuery {
 		this.query = query;
 	}
 
-	public Content in(Content parent) {
+	public Content<String> in(Content<String> parent) {
 		return inParent(parent,query);
 	}
 
-	public Content thatHas(String... values) {
+	public Content<String> thatHas(String... values) {
 		return hasValues(query, values);
 	}
 
-	public Content number(final int number) {
+	public Content<String> number(final int number) {
 		return indexOfQuery( query, number);
 	}
 
-	public Content parent() {
+	public Content<String> parent() {
 		return queryParent(query);
 	}
 
-	public Content sibling(Content content) {
+	public Content<String> sibling(Content<String> content) {
 		return querySibling(query, content);
 	}
 

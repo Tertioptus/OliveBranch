@@ -6,41 +6,41 @@ import com.olivebranch.ImageOf;
 import com.olivebranch.On;
 import com.olivebranch.Time;
 
-public final class LoggingAgent implements Agent {
+public final class LoggingAgent implements Agent<String> {
 	
-	private Agent agent;
+	private Agent<String> agent;
 	
-	public LoggingAgent(Agent agent) {
+	public LoggingAgent(Agent<String> agent) {
 		this.agent = agent;
 	}
 
-	public Agent goTo(String url) {
+	public Agent<String> goTo(String url) {
 		agent.goTo(url);
 		agent.capture(ImageOf.SCREEN);
 		return agent;
 	}
 
-	public Agent click(Content content) {
+	public Agent<String> click(Content<String> content) {
 		agent.click(content);
 		agent.capture(ImageOf.SCREEN);
 		return agent;
 	}
 
-	public Agent type(Content content, CharSequence keys) {
+	public Agent<String> type(Content<String> content, CharSequence keys) {
 		agent.type(content, keys);
 		return agent;
 	}
 
-	public Agent clear(Content content) {
+	public Agent<String> clear(Content<String> content) {
 		agent.clear(content);	
 		return agent;
 	}
 
-	public boolean verify(Content content) {
+	public boolean verify(Content<String> content) {
 		return agent.verify(content);
 	}
 
-	public Agent select(Content content, String option) {
+	public Agent<String> select(Content<String> content, String option) {
 		agent.select(content, option);
 		agent.capture(ImageOf.SCREEN);
 		return agent;
@@ -50,7 +50,7 @@ public final class LoggingAgent implements Agent {
 		agent.quit();
 	}
 
-	public Agent wait(Time time) {
+	public Agent<String> wait(Time time) {
 		return agent.wait(time);
 	}
 
@@ -62,7 +62,7 @@ public final class LoggingAgent implements Agent {
 		return agent.capture(imageOf);
 	}
 
-	public String read(Content content) {
+	public String read(Content<String> content) {
 		return agent.read(content);
 	}
 }

@@ -19,25 +19,25 @@ package com.olivebranch;
  * @version 1.0
  * @since 1.0
  */
-public interface Agent {
+public interface Agent<T> {
 
 	/**
 	 * Directs agent to a particular page within the application's site.
 	 * 
 	 * @param string
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent goTo(String string);
+	Agent<T> goTo(String string);
 
 	/**
 	 * Commands agent to click on a requested element.
 	 * 
 	 * @param selector
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent click(Content content);
+	Agent<T> click(Content<T> content);
 
 	/**
 	 * Tells agent to input text within the requested element.
@@ -45,9 +45,9 @@ public interface Agent {
 	 * @param selector
 	 * @param keys
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent type(Content content, CharSequence keys);
+	Agent<T> type(Content<T> content, CharSequence keys);
 
 	/**
 	 * Clears data out of the requested element. Primarily for textual form
@@ -55,9 +55,9 @@ public interface Agent {
 	 * 
 	 * @param selector
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent clear(Content content);
+	Agent<T> clear(Content<T> content);
 
 	/**
 	 * Selects option from specified select box content.
@@ -67,9 +67,9 @@ public interface Agent {
 	 * @param option
 	 *            select box option
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent select(Content selectBox, String option);
+	Agent<T> select(Content<T> selectBox, String option);
 
 	/**
 	 * Requests agent to wait for previous action to complete for a specified
@@ -78,9 +78,9 @@ public interface Agent {
 	 * @param time
 	 *            The amount of time for agent to wait.
 	 * 
-	 * @return Returns calling Agent
+	 * @return Returns calling Agent<T>
 	 */
-	Agent wait(Time time);
+	Agent<T> wait(Time time);
 
 	/**
 	 * Reports availability of requested element.
@@ -88,18 +88,18 @@ public interface Agent {
 	 * @param selector
 	 * @return availability of requested element.
 	 */
-	boolean verify(Content content);
+	boolean verify(Content<T> content);
 	
 	/**
-	 * Read the contents of a Content instance.
+	 * Read the contents of a Content<T> instance.
 	 * 
 	 * @param content
-	 * @return contents of Content
+	 * @return contents of Content<T>
 	 */
-	String read(Content content);
+	String read(Content<T> content);
 
 	/**
-	 * Agent reports on one aspect of user session
+	 * Agent<T> reports on one aspect of user session
 	 * 
 	 * @param on
 	 */

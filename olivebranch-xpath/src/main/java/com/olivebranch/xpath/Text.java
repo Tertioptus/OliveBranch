@@ -14,11 +14,11 @@ public final class Text {
 		return new Text(text);
 	}
 	
-	public Content isPresent() {
+	public Content<String> isPresent() {
 		return new Query(String.format("//text() = '%s'", text));
 	}
 	
-	public Content isNotPresent(){
+	public Content<String> isNotPresent(){
 		return new Query(String.format("//body[not(contains(.,'%s'))]", text));
 	}
 	

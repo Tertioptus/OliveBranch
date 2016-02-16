@@ -12,7 +12,7 @@ import static com.olivebranch.xpath.QueryUtility.valueOfInput;
 import com.olivebranch.Content;
 import com.olivebranch.FormContent;
 
-public enum Form implements FormContent {
+public enum Form implements FormContent<String> {
 
 	INPUT("input"),
 	LABEL("label"),
@@ -31,35 +31,35 @@ public enum Form implements FormContent {
 		this.query = "//" + query;
 	}
 
-	public FormContent labeled(String text) {
+	public FormContent<String> labeled(String text) {
 		return labelOfInput(query, text);
 	}
 
-	public FormContent parentForm() {
+	public FormContent<String> parentForm() {
 		return formAncestor(query);
 	}
 
-	public Content in(Content parent) {
+	public Content<String> in(Content<String> parent) {
 		return inParent(parent, query);
 	}
 
-	public FormContent thatHas(String... values) {
+	public FormContent<String> thatHas(String... values) {
 		return hasValues(query, values);
 	}
 
-	public Content number(int number) {
+	public Content<String> number(int number) {
 		return indexOfQuery( query, number);
 	}
 
-	public Content parent() {
+	public Content<String> parent() {
 		return queryParent(query);
 	}
 
-	public Content sibling(Content content) {
+	public Content<String> sibling(Content<String> content) {
 		return querySibling(query, content);
 	}
 	
-	public FormContent hasValue(String value) {
+	public FormContent<String> hasValue(String value) {
 		return valueOfInput(query, value);
 	}
 

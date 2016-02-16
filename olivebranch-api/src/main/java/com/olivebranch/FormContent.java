@@ -8,23 +8,23 @@ package com.olivebranch;
  * @since 1.0
  *
  */
-public interface FormContent extends Content {
+public interface FormContent<T> extends Content<T> {
 
 	/**
 	 * Returns element that has a label containing the specified text 
 	 * @param text text displayed from a label
 	 */
-	FormContent labeled(String text);
+	FormContent<T> labeled(String text);
 	
 	/**
 	 * Returns the form in which this content is contained 
 	 */
-	FormContent parentForm();
+	FormContent<T> parentForm();
 	
 	/**
 	 * Returns the input element that has the specified value
 	 * @param value
 	 * @return input element in the form of a Content object
 	 */
-	FormContent hasValue(String value);
+	FormContent<T> hasValue(String value);
 }

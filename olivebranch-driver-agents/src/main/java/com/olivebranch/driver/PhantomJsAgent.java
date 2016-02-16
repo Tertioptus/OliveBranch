@@ -27,7 +27,7 @@ import com.olivebranch.ImageOf;
 import com.olivebranch.On;
 import com.olivebranch.Time;
 
-public final class PhantomJsAgent implements Agent {
+public final class PhantomJsAgent implements Agent<String> {
 
 	private final WebDriver webDriver;
 
@@ -48,32 +48,32 @@ public final class PhantomJsAgent implements Agent {
 		webDriver.manage().window().setSize(new Dimension(1024, 768));
 	}
 
-	public Agent goTo(String path) {
+	public Agent<String> goTo(String path) {
 		webDriver.get(rootUrl + "/" + path);
 		return this;
 	}
 
-	public Agent click(Content content) {
+	public Agent<String> click(Content<String> content) {
 		findElement(content).click();
 		return this;
 	}
 
-	public Agent type(Content content, CharSequence keys) {
+	public Agent<String> type(Content<String> content, CharSequence keys) {
 		WebElement element = findElement(content);
 		element.sendKeys(keys);
 		return this;
 	}
 
-	public Agent clear(Content content) {
+	public Agent<String> clear(Content<String> content) {
 		findElement(content).clear();
 		return this;
 	}
 
-	public boolean verify(Content content) {
+	public boolean verify(Content<String> content) {
 		return findElement(content) != null;
 	}
 
-	public Agent select(Content content, String option) {
+	public Agent<String> select(Content<String> content, String option) {
 
 		Select clickThis = new Select(findElement(content));
 
@@ -111,7 +111,7 @@ public final class PhantomJsAgent implements Agent {
 		return filePath;
 	}
 
-	private WebElement findElement(final Content content) {
+	private WebElement findElement(final Content<String> content) {
 		takeScreenShot();
 
 		WebDriverWait wait = new WebDriverWait(webDriver, 30l, 2l);
@@ -140,7 +140,7 @@ public final class PhantomJsAgent implements Agent {
 		webDriver.quit();
 	}
 
-	public Agent wait(Time time) {
+	public Agent<String> wait(Time time) {
 		try {
 			Thread.sleep(time.milliseconds());
 		} catch (InterruptedException e) {
@@ -177,7 +177,7 @@ public final class PhantomJsAgent implements Agent {
 		return path;
 	}
 
-	public String read(Content content) {
+	public String read(Content<String> content) {
 		return findElement(content).getText();
 	};
 }

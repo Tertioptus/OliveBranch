@@ -6,21 +6,21 @@ import static com.olivebranch.xpath.QueryUtility.valueOfInput;
 
 import com.olivebranch.FormContent;
 
-public final class FormQuery extends AbstractQuery implements FormContent {
+public final class FormQuery extends AbstractQuery implements FormContent<String> {
 
 	public FormQuery(final String query) {
 		super(query);
 	}
 
-	public FormContent labeled(String text) {
+	public FormContent<String> labeled(String text) {
 		return labelOfInput(text, query);
 	}
 
-	public FormContent parentForm() {
+	public FormContent<String> parentForm() {
 		return formAncestor(query);
 	}
 	
-	public FormContent hasValue(String value) {
+	public FormContent<String> hasValue(String value) {
 		return valueOfInput(query, value);
 	}
 }
