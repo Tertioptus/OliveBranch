@@ -2,5 +2,5 @@ package com.olivebranch.mock;
 
 public interface Field {
 
-	String value();
+	String value() throws Exception;
 }

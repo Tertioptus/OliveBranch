@@ -1,6 +1,6 @@
 package com.olivebranch;
 
-import com.olivebranch.mock.Record;
+import com.olivebranch.mock.Profile;
 
 /**
  * 
@@ -17,8 +17,8 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input firstNameOf(Record person) {
-		return createInput(person.retrieve("firstName"));
+	public static Input firstNameOf(Profile person) throws Exception {
+		return createInput(person.field("firstName"));
 	}
 
 	/**
@@ -27,8 +27,8 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input lastNameOf(Record person) {
-		return createInput(person.retrieve("lastName"));
+	public static Input lastNameOf(Profile person) throws Exception {
+		return createInput(person.field("lastName"));
 	}
 	/**
 	 * Returns the name of given person
@@ -36,8 +36,8 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input nameOf(Record person) {
-		return createInput(person.retrieve("fullName"));
+	public static Input nameOf(Profile person) throws Exception {
+		return createInput(person.field("fullName"));
 	}
 	
 	/**

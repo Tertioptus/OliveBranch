@@ -1,7 +1,6 @@
 package com.olivebranch.mock;
 
-public interface Record {
+public interface Record<T> {
 	
-	String retrieve(String fieldName);
-
+	T load() throws Exception;
 }

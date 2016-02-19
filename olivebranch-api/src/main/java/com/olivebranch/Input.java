@@ -12,4 +12,8 @@ public final class Input {
 		return value;
 	}
 
+	@Override
+	public String toString() {
+		return this.value();
+	}
 }

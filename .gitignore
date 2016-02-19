@@ -4,3 +4,4 @@
 .svn
 target
 .externalToolBuilders
+*.iml
