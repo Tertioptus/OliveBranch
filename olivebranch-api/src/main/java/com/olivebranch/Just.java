@@ -27,6 +27,7 @@ public enum Just {
 	 * @return seconds in milliseconds
 	 */
 	public Time seconds() {
+		checkPlurality();
 		return new Time(count * TOTAL_MILLISECONDS_IN_A_SECOND);
 	}
 
@@ -35,9 +36,8 @@ public enum Just {
 	 * 
 	 * @return 1000 the number of milliseconds in a second
 	 */
-	public int second() {
-		checkPlurality();
-		return TOTAL_MILLISECONDS_IN_A_SECOND;
+	public Time second() {
+		return new Time(TOTAL_MILLISECONDS_IN_A_SECOND);
 	}
 	
 	/**
@@ -45,9 +45,9 @@ public enum Just {
 	 * 
 	 * @return minutes in milliseconds
 	 */
-	public int minutes() {
+	public Time minutes() {
 		checkPlurality();
-		return count * TOTAL_SECONDS_IN_A_MINUTE * TOTAL_MILLISECONDS_IN_A_SECOND; 
+		return new Time(count * TOTAL_SECONDS_IN_A_MINUTE * TOTAL_MILLISECONDS_IN_A_SECOND);
 	}
 	
 	/**
@@ -55,12 +55,12 @@ public enum Just {
 	 * 
 	 * @return 60000 the number milliseconds in a minute
 	 */
-	public int minute() {
-		return minutes();
+	public Time minute() {
+		return new Time(minutes().milliseconds());
 	}
 	
 	private void checkPlurality() {
-		if(count != 1) {
+		if(count == 1) {
 			throw new RuntimeException("Bad grammar:  Please choose the 'ONE' token when using this method");
 		}
 	}

@@ -47,7 +47,7 @@ public interface Agent<T> {
 	 * 
 	 * @return Returns calling Agent<T>
 	 */
-	Agent<T> type(Content<T> content, CharSequence keys);
+	Agent<T> typeInto(Content<T> content, Input input);
 
 	/**
 	 * Clears data out of the requested element. Primarily for textual form
@@ -69,7 +69,7 @@ public interface Agent<T> {
 	 * 
 	 * @return Returns calling Agent<T>
 	 */
-	Agent<T> select(Content<T> selectBox, String option);
+	Agent<T> selectFrom(Content<T> selectBox, String option);
 
 	/**
 	 * Requests agent to wait for previous action to complete for a specified

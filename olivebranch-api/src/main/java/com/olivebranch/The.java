@@ -30,6 +30,7 @@ public abstract class The {
 	public static Input lastNameOf(Profile person) throws Exception {
 		return createInput(person.field("lastName"));
 	}
+
 	/**
 	 * Returns the name of given person
 	 *  
@@ -39,7 +40,39 @@ public abstract class The {
 	public static Input nameOf(Profile person) throws Exception {
 		return createInput(person.field("fullName"));
 	}
-	
+
+	public static Input phoneNumberOf(Profile person) throws Exception {
+		return createInput(person.field("phoneNumber"));
+	}
+
+	public static Input emailAddressOf(Profile person) throws Exception {
+		return createInput(person.field("emailAddress"));
+	}
+
+	public static Input streetAddressOf(Profile person) throws Exception {
+		return createInput(person.field("streetAddress1"));
+	}
+
+	public static Input townOf(Profile person) throws Exception {
+		return createInput(person.field("town"));
+	}
+
+	public static Input stateOf(Profile person) throws Exception {
+		return createInput(person.field("state"));
+	}
+
+	public static Input zipCodeOf(Profile person) throws Exception {
+		return createInput(person.field("zipCode"));
+	}
+
+	public static Input longitudeOf(Profile person) throws Exception {
+		return createInput(person.field("longitude"));
+	}
+
+	public static Input latitudeOf(Profile person) throws Exception {
+		return createInput(person.field("latitude"));
+	}
+
 	/**
 	 * 
 	 * @param text
@@ -57,4 +90,5 @@ public abstract class The {
 	protected static Input createInput(String value) {
 		return new Input(value);
 	}
+
 }

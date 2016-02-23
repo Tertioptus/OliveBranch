@@ -2,7 +2,7 @@ package com.olivebranch.mock;
 /**
  * Created by bfpaige on 160219.
  */
-abstract class AbstractSampleRecords<T> implements Records<T> {
+abstract class AbstractSampleRecords<T> implements SampleRecords<T> {
 
    private T[] payload;
 
@@ -20,5 +20,9 @@ abstract class AbstractSampleRecords<T> implements Records<T> {
 
    public long size() {
       return payload.length;
+   }
+
+   public T[] getPayload() {
+      return payload;
    }
 }

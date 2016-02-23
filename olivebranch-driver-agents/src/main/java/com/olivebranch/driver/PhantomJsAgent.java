@@ -1,19 +1,8 @@
 package com.olivebranch.driver;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
+import com.olivebranch.*;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -21,11 +10,11 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.olivebranch.Agent;
-import com.olivebranch.Content;
-import com.olivebranch.ImageOf;
-import com.olivebranch.On;
-import com.olivebranch.Time;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 public final class PhantomJsAgent implements Agent<String> {
 
@@ -58,9 +47,9 @@ public final class PhantomJsAgent implements Agent<String> {
 		return this;
 	}
 
-	public Agent<String> type(Content<String> content, CharSequence keys) {
+	public Agent<String> typeInto(Content<String> content, Input input) {
 		WebElement element = findElement(content);
-		element.sendKeys(keys);
+		element.sendKeys(input.value());
 		return this;
 	}
 
@@ -73,7 +62,7 @@ public final class PhantomJsAgent implements Agent<String> {
 		return findElement(content) != null;
 	}
 
-	public Agent<String> select(Content<String> content, String option) {
+	public Agent<String> selectFrom(Content<String> content, String option) {
 
 		Select clickThis = new Select(findElement(content));
 

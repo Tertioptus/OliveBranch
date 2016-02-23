@@ -4,13 +4,28 @@ package com.olivebranch.mock;
  * Created by bfpaige on 160218.
  */
 public final class NonNullField implements Field {
-    private final String nonNullValue;
+    private final Field nonNullField;
 
-    public NonNullField(String value) {
-        this.nonNullValue=value!=null?value:"";
+    public NonNullField(final String value) {
+        this(new Field() {
+            public String value() throws Exception {
+                return value;
+            }
+        });
     }
 
-    public String value() {
-        return nonNullValue;
+    public NonNullField(final Field field) {
+        this.nonNullField=field==null?new EmptyStringField():field;
+    }
+
+    public String value() throws Exception {
+        return nonNullField.value()==null?"":nonNullField.value();
+    }
+
+    class EmptyStringField implements Field {
+
+        public String value() throws Exception {
+            return "";
+        }
     }
 }

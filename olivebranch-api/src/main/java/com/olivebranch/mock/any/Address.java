@@ -16,6 +16,7 @@ public final class Address implements Profile {
         map=new HashMap<String,Field>();
         add("streetAddress1",streetAddress1);
         add("town",town);
+        add("state",state);
         add("zipCode",zipCode);
         add("longitude",longitude);
         add("latitude",latitude);
