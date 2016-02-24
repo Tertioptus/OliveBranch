@@ -49,4 +49,19 @@ public final class Person implements Profile {
     public String field(String name) throws Exception {
         return map.containsKey(name)?map.get(name).value():"";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Person person=(Person) obj;
+        boolean isEqual=true;
+        for(String fieldName : map.keySet()) {
+            try {
+                isEqual=isEqual&&field(fieldName).equals(person.field(fieldName));
+            }
+            catch (Exception ex) {
+                //An "eat equals's" exception exception
+            }
+        }
+        return isEqual;
+    }
 }
