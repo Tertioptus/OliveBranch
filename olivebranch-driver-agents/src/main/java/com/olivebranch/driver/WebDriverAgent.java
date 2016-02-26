@@ -1,24 +1,15 @@
 package com.olivebranch.driver;
 
+import com.olivebranch.*;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
-import com.olivebranch.Agent;
-import com.olivebranch.Content;
-import com.olivebranch.ImageOf;
-import com.olivebranch.On;
-import com.olivebranch.Time;
-
-public class WebDriverAgent implements Agent<String> {
+public final class WebDriverAgent implements Agent<String> {
 
 	private final String host;
 	
@@ -44,9 +35,9 @@ public class WebDriverAgent implements Agent<String> {
 		return findElement(content).getText();
 	}
 
-	public Agent<String> type(Content<String> content, CharSequence keys) {
+	public Agent<String> typeInto(Content<String> content, Input input) {
 		WebElement element = findElement(content);
-		element.sendKeys(keys);
+		element.sendKeys(input.value());
 		return this;
 	}
 
@@ -64,7 +55,7 @@ public class WebDriverAgent implements Agent<String> {
 		return this;
 	}
 
-	public Agent<String> select(Content<String> content, String option) {
+	public Agent<String> selectFrom(Content<String> content, String option) {
 
         Select clickThis = new Select(findElement(content));
         

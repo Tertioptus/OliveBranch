@@ -56,7 +56,7 @@ public enum Just {
 	 * @return 60000 the number milliseconds in a minute
 	 */
 	public Time minute() {
-		return new Time(minutes().milliseconds());
+		return new Time(TOTAL_SECONDS_IN_A_MINUTE * TOTAL_MILLISECONDS_IN_A_SECOND);
 	}
 	
 	private void checkPlurality() {

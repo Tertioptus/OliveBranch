@@ -1,10 +1,6 @@
 package com.olivebranch.driver;
 
-import com.olivebranch.Agent;
-import com.olivebranch.Content;
-import com.olivebranch.ImageOf;
-import com.olivebranch.On;
-import com.olivebranch.Time;
+import com.olivebranch.*;
 
 public final class LoggingAgent implements Agent<String> {
 	
@@ -26,8 +22,8 @@ public final class LoggingAgent implements Agent<String> {
 		return agent;
 	}
 
-	public Agent<String> type(Content<String> content, CharSequence keys) {
-		agent.type(content, keys);
+	public Agent<String> typeInto(Content<String> content, Input input) {
+		agent.typeInto(content, input);
 		return agent;
 	}
 
@@ -40,8 +36,8 @@ public final class LoggingAgent implements Agent<String> {
 		return agent.verify(content);
 	}
 
-	public Agent<String> select(Content<String> content, String option) {
-		agent.select(content, option);
+	public Agent<String> selectFrom(Content<String> content, String option) {
+		agent.selectFrom(content, option);
 		agent.capture(ImageOf.SCREEN);
 		return agent;
 	}
