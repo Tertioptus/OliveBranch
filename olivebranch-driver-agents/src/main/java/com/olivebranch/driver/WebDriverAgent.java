@@ -47,7 +47,13 @@ public final class WebDriverAgent implements Agent<String> {
 	}
 
 	public boolean verify(Content<String> content) {
-		return findElement(content) != null;
+		boolean isPresent=false;
+		try {
+			isPresent=findElement(content) != null;
+		} catch (NoSuchElementException e) {
+			isPresent=false;
+		}
+		return isPresent;
 	}
 
 	public Agent<String> submit(Content<String> content) {

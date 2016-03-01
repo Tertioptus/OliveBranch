@@ -6,15 +6,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
 
 public final class PhantomJsAgent implements Agent<String> {
 
@@ -33,7 +29,6 @@ public final class PhantomJsAgent implements Agent<String> {
 		phantomjsArgs = new String[] { "--webdriver-logfile=target/phantomjsdriver.log", "--webdriver-loglevel=INFO" };
 		desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomjsArgs);
 		webDriver = new PhantomJSDriver(desiredCapabilities);
-		webDriver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		webDriver.manage().window().setSize(new Dimension(1024, 768));
 	}
 
@@ -59,7 +54,13 @@ public final class PhantomJsAgent implements Agent<String> {
 	}
 
 	public boolean verify(Content<String> content) {
-		return findElement(content) != null;
+		boolean isPresent=false;
+		try {
+			isPresent=findElement(content) != null;
+		} catch (Exception e) {
+			isPresent = false;
+		}
+		return isPresent;
 	}
 
 	public Agent<String> selectFrom(Content<String> content, String option) {
@@ -101,28 +102,8 @@ public final class PhantomJsAgent implements Agent<String> {
 	}
 
 	private WebElement findElement(final Content<String> content) {
-		takeScreenShot();
 
-		WebDriverWait wait = new WebDriverWait(webDriver, 30l, 2l);
-		wait.ignoring(NoSuchElementException.class);
-
-		return wait.until(new ExpectedCondition<WebElement>() {
-
-			public WebElement apply(WebDriver webDriver) {
-
-				WebElement elementTesting = null;
-
-				try {
-
-					elementTesting = webDriver.findElement(By.xpath(content.toString()));
-
-				} catch (StaleElementReferenceException exception) {
-					elementTesting = null;
-				}
-
-				return elementTesting;
-			}
-		});
+		return webDriver.findElement(By.xpath(content.toString()));
 	}
 
 	public void quit() {
