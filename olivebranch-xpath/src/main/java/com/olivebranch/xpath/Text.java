@@ -15,7 +15,7 @@ public final class Text {
 	}
 	
 	public Content<String> isPresent() {
-		return new Query(String.format("//text() = '%s'", text));
+		return new Query(String.format("//body[contains(.,'%s')]", text));
 	}
 	
 	public Content<String> isNotPresent(){
