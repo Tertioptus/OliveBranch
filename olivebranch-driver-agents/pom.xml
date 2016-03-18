@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.olivebranch</groupId>
 		<artifactId>olivebranch</artifactId>
-  		<version>1.0</version>
+  		<version>1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>olivebranch-driver-agents</artifactId>
@@ -45,4 +45,5 @@
 			<version>${com.github.detro.ghostdriver}</version>
 		</dependency>
 	</dependencies>
+
 </project>
