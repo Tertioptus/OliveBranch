@@ -6,5 +6,5 @@ target
 .externalToolBuilders
 *.iml
 *.iws
-.idea/
+.idea
 
