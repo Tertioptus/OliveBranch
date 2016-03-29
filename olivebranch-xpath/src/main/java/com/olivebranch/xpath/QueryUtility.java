@@ -14,7 +14,7 @@ class QueryUtility {
 	}
 
 	public static Query indexOfQuery(String query, int naturalNumberIndex) {
-		return new Query(String.format("(%s)[%s]", query, naturalNumberIndex));
+		return new Query(String.format("%s[%s]", query, naturalNumberIndex));
 	}
 
 	public static Query queryParent(String query) {
@@ -30,7 +30,7 @@ class QueryUtility {
 	}
 	
 	public static FormQuery valueOfInput(String query, String value) {
-		return new FormQuery(String.format("%s[@value='%s']", strip(query), value));
+		return new FormQuery(String.format("%s[@value='%s']", query, value));
 	}
 	
 	public static FormQuery formAncestor(String query) {

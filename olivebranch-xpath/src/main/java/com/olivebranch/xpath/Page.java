@@ -17,6 +17,8 @@ public enum Page implements Content<String> {
 	LINK("a"),
 
 	TAB("a"),
+	
+	MODAL("div[(contains(@style,'absolute'))][not(contains(@style,'display: none'))][not(contains(@style,'display:none'))][not(contains(@style,'left:-'))][not(contains(@style,'left: -'))][not(contains(@style,'left:0'))][not(contains(@style,'left: 0'))]"),
 
 	LIST_ITEM("li"),
 

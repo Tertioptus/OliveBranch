@@ -18,7 +18,7 @@ public enum Form implements FormContent<String> {
 	LABEL("label"),
 	BUTTON("button"),
 	RADIO("input[@type='radio']"),
-	SUBMIT("input[@type='submit']"),
+	SUBMIT("*[@type='submit']"),
 	SELECT("select"),
 	MULTI_SELECT("select[@multiple='multiple']"),
 	FIELDSET("fieldset"),
