@@ -1,6 +1,6 @@
 package com.olivebranch.mock;
 
-public interface Profile {
+public interface Profile<KEY> {
 
-	String field(String name) throws Exception;
+	String field(KEY name) throws Exception;
 }

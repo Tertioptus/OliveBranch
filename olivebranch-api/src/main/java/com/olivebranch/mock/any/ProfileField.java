@@ -3,12 +3,12 @@ package com.olivebranch.mock.any;
 import com.olivebranch.mock.Field;
 import com.olivebranch.mock.Profile;
 
-public final class ProfileField implements Field {
+public final class ProfileField<KEY> implements Field {
 
-	private final Profile profile;
-	private final String fieldName;
+	private final Profile<KEY> profile;
+	private final KEY fieldName;
 
-	public ProfileField(Profile profile, String fieldName) {
+	public ProfileField(Profile<KEY> profile, KEY fieldName) {
 		this.profile=profile;
 		this.fieldName=fieldName;
 	}

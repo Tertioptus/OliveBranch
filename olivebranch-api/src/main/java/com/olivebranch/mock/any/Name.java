@@ -4,21 +4,22 @@ import com.olivebranch.mock.Field;
 import com.olivebranch.mock.Profile;
 import com.olivebranch.mock.Records;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Name implements Profile {
+public class Name extends Memory<Name.Key, Field> implements Profile<Name.Key> {
 	
-	Map<String, Field> map;
+	public enum Key {
+		FIRST_NAME,
+		MIDDLE_NAME,
+		LAST_NAME
+	}
 	
 	public Name(Records<String> firstNames, Records<String> lastNames) {
-		map=new HashMap<String, Field>();
-		map.put("firstName", new CachedField(new RecordField(new AnyRecord<String>(firstNames))));
-		map.put("middleName", new CachedField(new RecordField(new AnyRecord<String>(firstNames))));
-		map.put("lastName", new CachedField(new RecordField(new AnyRecord<String>(lastNames))));
+		super(3);
+		put(Key.FIRST_NAME, new CachedField(new RecordField(new AnyRecord<String>(firstNames))));
+		put(Key.MIDDLE_NAME, new CachedField(new RecordField(new AnyRecord<String>(firstNames))));
+		put(Key.LAST_NAME, new CachedField(new RecordField(new AnyRecord<String>(lastNames))));
 	}
 
-	public String field(String name) throws Exception {
-		return map.get(name).value();
+	public String field(Key nameKey) throws Exception {
+		return get(nameKey).value();
 	}
 }

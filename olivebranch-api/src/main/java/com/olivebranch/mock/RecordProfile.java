@@ -3,7 +3,7 @@ package com.olivebranch.mock;
 /**
  * Created by bfpaige on 160218.
  */
-public class RecordProfile<T extends Profile> implements Profile {
+public class RecordProfile<KEY, T extends Profile<KEY>> implements Profile<KEY> {
 
     private final Record<T> profileRecord;
 
@@ -11,7 +11,7 @@ public class RecordProfile<T extends Profile> implements Profile {
         this.profileRecord = profileRecord;
     }
 
-    public String field(String name) throws Exception {
+    public String field(KEY name) throws Exception {
         return profileRecord.load().field(name);
     }
 }

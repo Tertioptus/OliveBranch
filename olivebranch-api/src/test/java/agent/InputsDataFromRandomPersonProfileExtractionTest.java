@@ -1,17 +1,25 @@
 package agent;
 
-import com.olivebranch.Agent;
-import com.olivebranch.Content;
-import com.olivebranch.Input;
-import com.olivebranch.The;
-import com.olivebranch.mock.*;
-import com.olivebranch.mock.any.Person;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import static org.mockito.Mockito.*;
+import com.olivebranch.Agent;
+import com.olivebranch.Content;
+import com.olivebranch.Input;
+import com.olivebranch.The;
+import com.olivebranch.mock.SampleAddressRecords;
+import com.olivebranch.mock.SampleEmailAddressRecords;
+import com.olivebranch.mock.SampleFirstNameRecords;
+import com.olivebranch.mock.SampleLastNameRecords;
+import com.olivebranch.mock.SamplePhoneNumberRecords;
+import com.olivebranch.mock.any.AnyPerson;
+import com.olivebranch.mock.any.Person;
 
 /**
  * A testing agent creates a random person from stock sample records and asserts
@@ -51,7 +59,7 @@ public class InputsDataFromRandomPersonProfileExtractionTest {
 
         //Generate a number of random persons
         for (int i = 0; i < 30; i++) {
-            Person person = new Person(new SampleFirstNameRecords(),
+            Person person = new AnyPerson(new SampleFirstNameRecords(),
                     new SampleLastNameRecords(),
                     new SampleAddressRecords(),
                     new SamplePhoneNumberRecords(),
@@ -94,7 +102,7 @@ public class InputsDataFromRandomPersonProfileExtractionTest {
                 });
 
         //Generate random person
-        Person person = new Person(new SampleFirstNameRecords(),
+        Person person = new AnyPerson(new SampleFirstNameRecords(),
                 new SampleLastNameRecords(),
                 new SampleAddressRecords(),
                 new SamplePhoneNumberRecords(),

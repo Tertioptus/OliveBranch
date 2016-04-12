@@ -1,6 +1,6 @@
 package com.olivebranch;
 
-import com.olivebranch.mock.Profile;
+import com.olivebranch.mock.any.Person;
 
 /**
  * 
@@ -17,8 +17,8 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input firstNameOf(Profile person) throws Exception {
-		return createInput(person.field("firstName"));
+	public static Input firstNameOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.FIRST_NAME));
 	}
 
 	/**
@@ -27,8 +27,8 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input lastNameOf(Profile person) throws Exception {
-		return createInput(person.field("lastName"));
+	public static Input lastNameOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.LAST_NAME));
 	}
 
 	/**
@@ -37,40 +37,40 @@ public abstract class The {
 	 * @param person
 	 * @return input
 	 */
-	public static Input nameOf(Profile person) throws Exception {
-		return createInput(person.field("fullName"));
+	public static Input nameOf(Person person) throws Exception {
+		return createInput(String.format("%s %s", person.field(Person.Key.FIRST_NAME), person.field(Person.Key.LAST_NAME)));
 	}
 
-	public static Input phoneNumberOf(Profile person) throws Exception {
-		return createInput(person.field("phoneNumber"));
+	public static Input phoneNumberOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.PHONE_NUMBER));
 	}
 
-	public static Input emailAddressOf(Profile person) throws Exception {
-		return createInput(person.field("emailAddress"));
+	public static Input emailAddressOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.EMAIL_ADDRESS));
 	}
 
-	public static Input streetAddressOf(Profile person) throws Exception {
-		return createInput(person.field("streetAddress1"));
+	public static Input streetAddressOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.STREET_ADDRESS_1));
 	}
 
-	public static Input townOf(Profile person) throws Exception {
-		return createInput(person.field("town"));
+	public static Input townOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.TOWN));
 	}
 
-	public static Input stateOf(Profile person) throws Exception {
-		return createInput(person.field("state"));
+	public static Input stateOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.STATE));
 	}
 
-	public static Input zipCodeOf(Profile person) throws Exception {
-		return createInput(person.field("zipCode"));
+	public static Input zipCodeOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.ZIP_CODE));
 	}
 
-	public static Input longitudeOf(Profile person) throws Exception {
-		return createInput(person.field("longitude"));
+	public static Input longitudeOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.LONGITUDE));
 	}
 
-	public static Input latitudeOf(Profile person) throws Exception {
-		return createInput(person.field("latitude"));
+	public static Input latitudeOf(Person person) throws Exception {
+		return createInput(person.field(Person.Key.LATITUDE));
 	}
 
 	/**
