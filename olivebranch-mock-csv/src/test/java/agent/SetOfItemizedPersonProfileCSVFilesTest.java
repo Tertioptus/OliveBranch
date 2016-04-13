@@ -1,15 +1,17 @@
 package agent;
 
-import com.google.common.io.Resources;
-import com.olivebranch.mock.Records;
-import com.olivebranch.mock.any.Person;
-import com.olivebranch.mock.csv.CsvAddressRecords;
-import com.olivebranch.mock.csv.SingleColumnCsvRecords;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.io.Resources;
+import com.olivebranch.mock.Records;
+import com.olivebranch.mock.any.AnyPerson;
+import com.olivebranch.mock.any.Person;
+import com.olivebranch.mock.csv.CsvAddressRecords;
+import com.olivebranch.mock.csv.SingleColumnCsvRecords;
 
 /**
  * Testing agent creates a set of unique persons from stock data in various CSV files.
@@ -36,14 +38,15 @@ public class SetOfItemizedPersonProfileCSVFilesTest {
      */
     @Test
     public void createUniquePersons() throws Exception {
-        Person person1 = new Person(
+        Person person1 = new AnyPerson(
                 csvData.get("firstNames.csv"),
                 csvData.get("lastNames.csv"),
                 csvData.get("addresses.csv"),
                 csvData.get("emailAddresses.csv"),
                 csvData.get("phoneNumbers.csv"));
 
-        Person person2 = new Person(
+        
+        Person person2 = new AnyPerson(
                 csvData.get("firstNames.csv"),
                 csvData.get("lastNames.csv"),
                 csvData.get("addresses.csv"),
