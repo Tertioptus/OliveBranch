@@ -19,6 +19,8 @@ public enum Page implements Content<String> {
 	TAB("a"),
 	
 	MODAL("div[(contains(@style,'absolute'))][not(contains(@style,'display: none'))][not(contains(@style,'display:none'))][not(contains(@style,'left:-'))][not(contains(@style,'left: -'))][not(contains(@style,'left:0'))][not(contains(@style,'left: 0'))]"),
+	
+	HEADER("(//h1|//h2|//h3|//h4|//h5)"),
 
 	LIST_ITEM("li"),
 
@@ -29,7 +31,10 @@ public enum Page implements Content<String> {
 	private final String query;
 
 	Page(String query) {
-		this.query = "//" + query;
+		if(query.startsWith("("))
+				this.query=query;
+		else
+			this.query = "//" + query;
 	};
 
 	public Content<String> in(Content<String> parent) {
