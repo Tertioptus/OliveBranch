@@ -1,11 +1,5 @@
 package com.olivebranch.xpath;
 
-import static com.olivebranch.xpath.QueryUtility.hasValues;
-import static com.olivebranch.xpath.QueryUtility.inParent;
-import static com.olivebranch.xpath.QueryUtility.indexOfQuery;
-import static com.olivebranch.xpath.QueryUtility.queryParent;
-import static com.olivebranch.xpath.QueryUtility.querySibling;
-
 import com.olivebranch.Content;
 
 public enum Page implements Content<String> {
@@ -28,40 +22,37 @@ public enum Page implements Content<String> {
 
 	CELL("td");
 
-	private final String query;
+	private final Query query;
 
 	Page(String query) {
-		if(query.startsWith("("))
-				this.query=query;
-		else
-			this.query = "//" + query;
+		this.query=new Query(query.startsWith("(")?query:"//" + query);
 	};
 
 	public Content<String> in(Content<String> parent) {
-		return inParent(parent, query);
+		return query.in(parent);
 	}
 
 	public Content<String> thatHas(String... values) {
-		return hasValues(query + "[contains(.,'%s')]", values);
-	}
-
-	public Content<String> parent() {
-		return queryParent(query);
-	}
-
-	public Content<String> sibling(Content<String> content) {
-		return querySibling(query, content);
-	}
-
-	public String toString() {
-		return query;
+		return query.thatHas(values);
 	}
 
 	public Content<String> number(int number) {
-		return indexOfQuery(query, number);
+		return query.number(number);
+	}
+
+	public Content<String> parent() {
+		return query.parent();
+	}
+
+	public Content<String> sibling(Content<String> content) {
+		return query.sibling(content);
 	}
 
 	public String query() {
-		return query;
+		return query.query();
+	}
+	
+	public String toString() {
+		return query.toString();
 	}
 }

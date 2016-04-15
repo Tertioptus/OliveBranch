@@ -104,6 +104,16 @@ public interface Agent<T> {
 	 * @param on
 	 */
 	String report(On on);
+	
+	/**
+	 * Get note from the current user session
+	 */
+	String recall(String key);
+	
+	/**
+	 * Jot down a note for the current user session 
+	 */
+	void note(String key, String value);
 
 	/**
 	 * Record the current rendition of a GUIs resource.

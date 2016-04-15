@@ -1,20 +1,34 @@
 package com.olivebranch.driver;
 
-import com.olivebranch.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
+import com.olivebranch.Agent;
+import com.olivebranch.Content;
+import com.olivebranch.ImageOf;
+import com.olivebranch.Input;
+import com.olivebranch.On;
+import com.olivebranch.Time;
 
 public final class PhantomJsAgent implements Agent<String> {
 
 	private final WebDriver webDriver;
+	private final Map<String, String> journal;
 
 	private String rootUrl;
 	private String[] phantomjsArgs;
@@ -30,6 +44,7 @@ public final class PhantomJsAgent implements Agent<String> {
 		desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, phantomjsArgs);
 		webDriver = new PhantomJSDriver(desiredCapabilities);
 		webDriver.manage().window().setSize(new Dimension(1024, 768));
+		this.journal=new HashMap<>();
 	}
 
 	public Agent<String> goTo(String path) {
@@ -107,6 +122,7 @@ public final class PhantomJsAgent implements Agent<String> {
 	}
 
 	public void quit() {
+		journal.clear();
 		webDriver.quit();
 	}
 
@@ -149,5 +165,15 @@ public final class PhantomJsAgent implements Agent<String> {
 
 	public String read(Content<String> content) {
 		return findElement(content).getText();
+	}
+
+	@Override
+	public String recall(String key) {
+		return journal.get(key)==null?"":journal.get(key);
+	}
+
+	@Override
+	public void note(String key, String value) {
+		journal.put(key, value);
 	};
 }
