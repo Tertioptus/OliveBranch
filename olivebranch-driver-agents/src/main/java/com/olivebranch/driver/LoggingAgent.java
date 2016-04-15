@@ -61,4 +61,14 @@ public final class LoggingAgent implements Agent<String> {
 	public String read(Content<String> content) {
 		return agent.read(content);
 	}
+
+	@Override
+	public String recall(String key) {
+		return agent.recall(key);
+	}
+
+	@Override
+	public void note(String key, String value) {
+		agent.note(key, value);
+	}
 }

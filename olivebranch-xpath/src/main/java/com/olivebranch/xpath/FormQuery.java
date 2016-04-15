@@ -13,7 +13,7 @@ public final class FormQuery extends AbstractQuery implements FormContent<String
 	}
 
 	public FormContent<String> labeled(String text) {
-		return labelOfInput(text, query);
+		return labelOfInput(query, text);
 	}
 
 	public FormContent<String> parentForm() {

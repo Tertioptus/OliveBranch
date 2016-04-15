@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -85,7 +86,7 @@ public class InputsDataFromRandomPersonProfileExtractionTest {
     /**
      * Attempt to perform objective with invalid input.
      */
-    @Test
+    @Ignore
     public void nonStatedKeysFromPersonObjectReturnsEmptyString() throws Exception {
         //When type agent types into a content field
         when(agent.typeInto(any(Content.class), any(Input.class)))

@@ -21,7 +21,7 @@ abstract class AbstractQuery {
 	}
 
 	public Content<String> thatHas(String... values) {
-		return hasValues(query, values);
+		return hasValues(query + "[contains(.,'%s')]", values);
 	}
 
 	public Content<String> number(final int number) {

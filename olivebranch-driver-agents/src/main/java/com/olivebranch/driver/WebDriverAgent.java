@@ -1,13 +1,26 @@
 package com.olivebranch.driver;
 
-import com.olivebranch.*;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import com.olivebranch.Agent;
+import com.olivebranch.Content;
+import com.olivebranch.ImageOf;
+import com.olivebranch.Input;
+import com.olivebranch.On;
+import com.olivebranch.Time;
 
 public final class WebDriverAgent implements Agent<String> {
 
@@ -15,10 +28,13 @@ public final class WebDriverAgent implements Agent<String> {
 	
 	protected final WebDriver webDriver;
 	
+	private final Map<String, String> journal;
+	
 	public WebDriverAgent(final WebDriver webDriver, final String host) {
 		this.webDriver = webDriver;
 		this.host = host;
 		webDriver.get(host);
+		this.journal=new HashMap<>();
 	}
 
 	public Agent<String> goTo(String url) {
@@ -106,6 +122,7 @@ public final class WebDriverAgent implements Agent<String> {
 	}
 
 	public void  quit() {
+		journal.clear();
 		webDriver.quit();
 	}
 
@@ -144,5 +161,15 @@ public final class WebDriverAgent implements Agent<String> {
 			break;
 		}
 		return path;
+	}
+
+	@Override
+	public String recall(String key) {
+		return journal.get(key)==null?"":journal.get(key);
+	}
+
+	@Override
+	public void note(String key, String value) {
+		journal.put(key, value);
 	}
 }
