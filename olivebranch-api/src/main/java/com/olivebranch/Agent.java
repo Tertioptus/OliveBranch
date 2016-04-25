@@ -108,12 +108,17 @@ public interface Agent<T> {
 	/**
 	 * Get note from the current user session
 	 */
-	String recall(String key);
+	String noteFor(String key);
 	
 	/**
-	 * Jot down a note for the current user session 
+	 * Jot down a user input note for the current user session 
 	 */
-	void note(String key, String value);
+	Note note(Input input);
+	
+	/**
+	 * Jot down a note about the UI for the current user session 
+	 */
+	Note note(Content<T> content);
 
 	/**
 	 * Record the current rendition of a GUIs resource.

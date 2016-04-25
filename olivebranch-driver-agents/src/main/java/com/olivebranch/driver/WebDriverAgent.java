@@ -19,7 +19,9 @@ import com.olivebranch.Agent;
 import com.olivebranch.Content;
 import com.olivebranch.ImageOf;
 import com.olivebranch.Input;
+import com.olivebranch.Note;
 import com.olivebranch.On;
+import com.olivebranch.The;
 import com.olivebranch.Time;
 
 public final class WebDriverAgent implements Agent<String> {
@@ -164,12 +166,17 @@ public final class WebDriverAgent implements Agent<String> {
 	}
 
 	@Override
-	public String recall(String key) {
+	public String noteFor(String key) {
 		return journal.get(key)==null?"":journal.get(key);
 	}
 
 	@Override
-	public void note(String key, String value) {
-		journal.put(key, value);
+	public Note note(Input input) {
+		return input.note(journal);
+	}
+
+	@Override
+	public Note note(Content<String> content) {
+		return note(The.followingText(read(content)));
 	}
 }

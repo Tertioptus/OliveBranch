@@ -12,17 +12,17 @@ public final class LoggingAgent implements Agent<String> {
 
 	public Agent<String> goTo(String url) {
 		agent.goTo(url);
-		agent.capture(ImageOf.SCREEN);
 		return agent;
 	}
 
 	public Agent<String> click(Content<String> content) {
-		agent.click(content);
 		agent.capture(ImageOf.SCREEN);
+		agent.click(content);
 		return agent;
 	}
 
 	public Agent<String> typeInto(Content<String> content, Input input) {
+		agent.capture(ImageOf.SCREEN);
 		agent.typeInto(content, input);
 		return agent;
 	}
@@ -37,8 +37,8 @@ public final class LoggingAgent implements Agent<String> {
 	}
 
 	public Agent<String> selectFrom(Content<String> content, String option) {
-		agent.selectFrom(content, option);
 		agent.capture(ImageOf.SCREEN);
+		agent.selectFrom(content, option);
 		return agent;
 	}
 
@@ -63,12 +63,17 @@ public final class LoggingAgent implements Agent<String> {
 	}
 
 	@Override
-	public String recall(String key) {
-		return agent.recall(key);
+	public String noteFor(String key) {
+		return agent.noteFor(key);
 	}
 
 	@Override
-	public void note(String key, String value) {
-		agent.note(key, value);
+	public Note note(Input input) {
+		return agent.note(input);
+	}
+
+	@Override
+	public Note note(Content<String> content) {
+		return agent.note(content);
 	}
 }

@@ -5,6 +5,8 @@ import com.olivebranch.Content;
 public enum Page implements Content<String> {
 
 	BUTTON("button"),
+	
+	FORM("form"),
 
 	IMAGE("img"),
 

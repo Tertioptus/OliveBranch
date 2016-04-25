@@ -2,6 +2,7 @@ package com.olivebranch.driver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +23,9 @@ import com.olivebranch.Agent;
 import com.olivebranch.Content;
 import com.olivebranch.ImageOf;
 import com.olivebranch.Input;
+import com.olivebranch.Note;
 import com.olivebranch.On;
+import com.olivebranch.The;
 import com.olivebranch.Time;
 
 public final class PhantomJsAgent implements Agent<String> {
@@ -89,8 +92,16 @@ public final class PhantomJsAgent implements Agent<String> {
 	private String takeScreenShot() {
 
 		File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		
+		Calendar calendar = Calendar.getInstance();
 
-		String directory = "target/screenshots/screenshot-" + new Date().getTime();
+		String directory = "target/screenshots/screenshot-" 
+								+ calendar.get(Calendar.YEAR) + "-"
+								+ calendar.get(Calendar.MONTH) + "-"
+								+ calendar.get(Calendar.DAY_OF_MONTH) + "-"
+								+ calendar.get(Calendar.HOUR) + "-"
+								+ calendar.get(Calendar.MINUTE) + "-"
+								+ calendar.get(Calendar.SECOND);
 
 		String filePath = directory + ".png";
 		// Now you can do whatever you need to do with it, for example copy
@@ -168,12 +179,17 @@ public final class PhantomJsAgent implements Agent<String> {
 	}
 
 	@Override
-	public String recall(String key) {
+	public String noteFor(String key) {
 		return journal.get(key)==null?"":journal.get(key);
 	}
 
 	@Override
-	public void note(String key, String value) {
-		journal.put(key, value);
+	public Note note(Input input) {
+		return input.note(journal);
 	};
+	
+	@Override
+	public Note note(Content<String> content) {
+		return note(The.followingText(read(content)));
+	}
 }
