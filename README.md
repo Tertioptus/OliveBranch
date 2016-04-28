@@ -1,4 +1,4 @@
-![Olive Branch logo](Olive-branch-logo.svg)
+![Olive Branch logo](Olive-branch-logo.svg?raw=true)
 
 Olive Branch is a system testing toolkit designed for the expressed purpose of modeling a common test-scripting language that can be easily read by business analysts, developers and quality assurance personnel. 
 
